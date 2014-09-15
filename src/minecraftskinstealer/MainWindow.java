@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MainWindow extends javax.swing.JFrame {
     private boolean _isOSX = false;
+    private boolean test = true;
     BufferedImage img;
     /**
      * Creates new form MainWindow
