@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.FileDialog;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -73,7 +74,20 @@ public class MainWindow extends javax.swing.JFrame {
         System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Minecraft Skin Stealer");
         com.apple.eawt.Application app = new com.apple.eawt.Application();
         app.setDockIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
-        
+        try
+        {OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("showAbout", (Class[])null));}
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+                    
+    }
+    
+    //For OS X Use Only
+    public void showAbout()
+    {
+        AboutDialog ab = new AboutDialog();
+        ab.setVisible(true);
     }
     
     public void downloadSkin()

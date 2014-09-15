@@ -18,8 +18,8 @@ import javax.swing.UIManager;
  */
 public class MinecraftSkinStealer 
 {
-    public String version = "1.0.2";
-    public static String staticVersion = "1.0.2";
+    public String version = "1.0.2.1";
+    public static String staticVersion = "1.0.2.1";
     public static String systemLookAndFeel = null;
     public boolean isOSX = false;
     /**
@@ -27,6 +27,9 @@ public class MinecraftSkinStealer
      */
     public static void main(String[] args) 
     {
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Minecraft Skin Stealer");
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
+        
         if(args.length > 0)
         {
             String par = args[0];
@@ -51,7 +54,7 @@ public class MinecraftSkinStealer
     
     public void runGUI()
     {
-        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Minecraft Skin Stealer");
+        
         com.apple.eawt.Application app = new com.apple.eawt.Application();
         app.setDockIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
             OsCheck.OSType osType = OsCheck.getOperatingSystemType();
