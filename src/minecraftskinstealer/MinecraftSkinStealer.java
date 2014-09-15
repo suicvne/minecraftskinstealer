@@ -10,7 +10,7 @@ import java.awt.Toolkit;
 import java.io.PrintStream;
 import java.util.Set;
 import javax.swing.UIManager;
-import com.apple.eawt.*;
+//import com.apple.eawt.*;
 
 /**
  *
