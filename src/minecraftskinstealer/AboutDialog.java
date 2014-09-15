@@ -82,6 +82,7 @@ public static BufferedImage toBufferedImage(Image img)
         setTitle("About");
         setAlwaysOnTop(true);
         setMaximumSize(new java.awt.Dimension(409, 294));
+        setUndecorated(true);
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
@@ -176,7 +177,7 @@ public static BufferedImage toBufferedImage(Image img)
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         this.setVisible(false);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**

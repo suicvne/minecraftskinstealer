@@ -75,7 +75,10 @@ public class MainWindow extends javax.swing.JFrame {
         com.apple.eawt.Application app = new com.apple.eawt.Application();
         app.setDockIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
         try
-        {OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("showAbout", (Class[])null));}
+        {
+            OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("showAbout", (Class[])null));
+            OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quitApp", (Class[])null));
+        }
         catch(Exception ex)
         {
             ex.printStackTrace();
@@ -89,7 +92,11 @@ public class MainWindow extends javax.swing.JFrame {
         AboutDialog ab = new AboutDialog();
         ab.setVisible(true);
     }
-    
+    public boolean quitApp()
+    {
+        return true;
+    }
+    //End OS X Only
     public void downloadSkin()
     {
         String content = this.userNameTextBox.getText();
