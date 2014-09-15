@@ -54,9 +54,6 @@ public class MinecraftSkinStealer
     
     public void runGUI()
     {
-        
-        com.apple.eawt.Application app = new com.apple.eawt.Application();
-        app.setDockIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/icon.png")));
             OsCheck.OSType osType = OsCheck.getOperatingSystemType();
             switch(osType)
             {
