@@ -23,6 +23,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import static minecraftskinstealer.OsCheck.OSType.Linux;
+import static minecraftskinstealer.OsCheck.OSType.Other;
 
 /**
  *
@@ -131,8 +133,8 @@ public class MainWindow extends javax.swing.JFrame {
 				}
             }
         };
-        
-        if(_isOSX)
+        OsCheck.OSType ostype = OsCheck.getOperatingSystemType();
+        if(_isOSX || ostype == Linux || ostype == Other)
         {
             FileDialog fd = new FileDialog(this, "Save Skin", FileDialog.SAVE);
             fd.setDirectory(System.getProperty("java.home"));
