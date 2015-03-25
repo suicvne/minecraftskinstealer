@@ -104,7 +104,7 @@ public class MainWindow extends javax.swing.JFrame {
         {
             try
             {
-                String urll = String.format("http://s3.amazonaws.com/MinecraftSkins/%s.png", content);
+                String urll = String.format("http://skins.minecraft.net/MinecraftSkins/%s.png", content);
                 URL url = new URL(urll);
                 this.urlTextBox.setText(urll);
                 this.img = ImageIO.read(url);
