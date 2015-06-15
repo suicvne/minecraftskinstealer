@@ -104,13 +104,26 @@ public class MainWindow extends javax.swing.JFrame {
         {
             try
             {
-                String urll = String.format("http://skins.minecraft.net/MinecraftSkins/%s.png", content);
-                URL url = new URL(urll);
-                this.urlTextBox.setText(urll);
-                this.img = ImageIO.read(url);
-                this.skinPreview.setIcon(new ImageIcon(img));
-                this.saveSkinButton.setEnabled(true);
-                this.resetViewButton.setEnabled(true);
+                if(jRadioButton1.isSelected())
+                {
+                    String urll = String.format("http://skins.minecraft.net/MinecraftSkins/%s.png", content);
+                    URL url = new URL(urll);
+                    this.urlTextBox.setText(urll);
+                    this.img = ImageIO.read(url);
+                    this.skinPreview.setIcon(new ImageIcon(img));
+                    this.saveSkinButton.setEnabled(true);
+                    this.resetViewButton.setEnabled(true);
+                }
+                else if(jRadioButton2.isSelected())
+                {
+                    String urll = String.format("http://s3.amazonaws.com/MinecraftSkins/%s.png", content);
+                    URL url = new URL(urll);
+                    this.urlTextBox.setText(urll);
+                    this.img = ImageIO.read(url);
+                    this.skinPreview.setIcon(new ImageIcon(img));
+                    this.saveSkinButton.setEnabled(true);
+                    this.resetViewButton.setEnabled(true);
+                }
             }
             catch(Exception ex)
             {
@@ -211,6 +224,7 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         skinPreview = new javax.swing.JLabel();
         userNameTextBox = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -220,6 +234,8 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         urlTextBox = new javax.swing.JTextField();
         aboutLabel = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Minecraft Skin Stealer");
@@ -259,8 +275,17 @@ public class MainWindow extends javax.swing.JFrame {
         urlTextBox.setEditable(false);
         urlTextBox.setName("urlTextField"); // NOI18N
 
-        aboutLabel.setText("v1.0.2.1");
+        aboutLabel.setText("v1.0.2.2");
         aboutLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("New Skin Server");
+        jRadioButton1.setName("newServerRB"); // NOI18N
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Old Skin Server");
+        jRadioButton2.setName("oldServerRB"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,22 +298,27 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(urlTextBox)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(137, 137, 137)
+                                .addComponent(skinPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(aboutLabel)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(downloadSkinButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resetViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(saveSkinButton)))
-                        .addGap(0, 13, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(downloadSkinButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(resetViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(saveSkinButton)))))
+                        .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(skinPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,13 +334,17 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(downloadSkinButton)
                     .addComponent(resetViewButton)
                     .addComponent(saveSkinButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(urlTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(aboutLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -365,9 +399,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutLabel;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton downloadSkinButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JButton resetViewButton;
     private javax.swing.JButton saveSkinButton;
     private javax.swing.JLabel skinPreview;
